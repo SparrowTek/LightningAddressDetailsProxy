@@ -1,5 +1,5 @@
 {
-  "originHash" : "8ce85fca67c8deba92ab3a0b5be40a3d450cd84b01f0ef3c1918d1cb3709f5c2",
+  "originHash" : "b68016186542af10a1feaddb4c542f8b7db1ed78c427624d90de2e75e28bc432",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -56,15 +56,6 @@
       }
     },
     {
-      "identity" : "soto",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/soto-project/soto.git",
-      "state" : {
-        "revision" : "073a32e8c8b35d15d9b81d022ad51e0ab8f46008",
-        "version" : "7.4.0"
-      }
-    },
-    {
       "identity" : "soto-core",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/soto-project/soto-core",
@@ -101,12 +92,39 @@
       }
     },
     {
+      "identity" : "swift-async-algorithms",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-async-algorithms.git",
+      "state" : {
+        "revision" : "4c3ea81f81f0a25d0470188459c6d4bf20cf2f97",
+        "version" : "1.0.3"
+      }
+    },
+    {
       "identity" : "swift-atomics",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-atomics.git",
       "state" : {
         "revision" : "cd142fd2f64be2100422d658e7411e39489da985",
         "version" : "1.2.0"
+      }
+    },
+    {
+      "identity" : "swift-aws-lambda-events",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-server/swift-aws-lambda-events",
+      "state" : {
+        "branch" : "main",
+        "revision" : "0025b1a409aa4d3fe9900aff1339ac403343ccd5"
+      }
+    },
+    {
+      "identity" : "swift-aws-lambda-runtime",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-server/swift-aws-lambda-runtime",
+      "state" : {
+        "branch" : "main",
+        "revision" : "7322a3694ae8e025b3b44eb97c9c89ad53d0d2f2"
       }
     },
     {
@@ -242,6 +260,15 @@
       "state" : {
         "revision" : "8946c930cae601452149e45d31d8ddfac973c3c7",
         "version" : "1.2.0"
+      }
+    },
+    {
+      "identity" : "swift-service-lifecycle",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-server/swift-service-lifecycle.git",
+      "state" : {
+        "revision" : "7ee57f99fbe0073c3700997186721e74d925b59b",
+        "version" : "2.7.0"
       }
     },
     {
