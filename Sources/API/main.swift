@@ -13,7 +13,15 @@ import AsyncHTTPClient
 
 
 let runtime = LambdaRuntime { (event: APIGatewayV2Request, context: LambdaContext) -> APIGatewayV2Response in
-    let response = try await getJSON(for: event.rawQueryString)
+    guard let ln = event.queryStringParameters["ln"] else { throw NetworkError.wrongQueryParameters }
+    let response = try await getJSON(for: ln)
+    
+//    public var statusCode: HTTPResponse.Status
+//    public var headers: HTTPHeaders?
+//    public var body: String?
+//    public var isBase64Encoded: Bool?
+//    public var cookies: [String]?
+    
     return APIGatewayV2Response(
         statusCode: .ok,
         body: response
@@ -48,7 +56,7 @@ private func getJSON(for url: String) async throws -> String {
     
     switch response.status {
     case .ok:
-        let contentType = response.headers.first(name: "content-type")
+//        let contentType = response.headers.first(name: "content-type")
         let buffer = try await response.body.collect(upTo: 1024 * 1024)
         return String(buffer: buffer)
 //        let buffer = try await response.body.collect(upTo: 1024 * 1024)
@@ -60,6 +68,9 @@ private func getJSON(for url: String) async throws -> String {
 enum NetworkError: Error {
     case badBuffer
     case invalidResponse
+    case invalidFormat(String)
+    case wrongQueryParameters
+    
 //    case invalidURL
 //    case httpError(statusCode: Int, message: String)
 //    case jsonDecodingError(Error)
@@ -70,6 +81,14 @@ private func updateURLForAlby(_ url: inout String) {
    let urlPrefix = "https://getalby.com"
    let replacement = "http://alby-mainnet-getalbycom"
    url.replace(urlPrefix, with: replacement, maxReplacements: 1)
+}
+
+func lnurlpWellKnown(identifier: String) throws -> String {
+    let parts = identifier.split(separator: "@")
+    guard parts.count == 2 else { throw NetworkError.invalidFormat(identifier) }
+    let username = parts[0]
+    let domain = parts[1]
+    return "https://\(domain)/.well-known/lnurlp/\(username)"
 }
 
 
