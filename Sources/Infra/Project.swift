@@ -12,8 +12,8 @@ struct LightningAddressDetailsProxy: AWSProject {
     func build() async throws -> Outputs {
         
         let lambda = AWS.Function(
-            "api",
-            targetName: "Api",
+            "lightning-address-details-proxy",
+            targetName: "API",
             url: .enabled(cors: true),
             reservedConcurrency: 1
         )
