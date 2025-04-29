@@ -14,8 +14,7 @@ struct LightningAddressDetailsProxy: AWSProject {
         let lambda = AWS.Function(
             "lightning-address-details-proxy",
             targetName: "API",
-            url: .enabled(cors: true),
-            reservedConcurrency: 10
+            url: .enabled(cors: true)
         )
         
         return [
