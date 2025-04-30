@@ -15,7 +15,6 @@ struct LightningAddressDetailsProxy: AWSProject {
             "lightning-address-details-proxy",
             targetName: "API",
             url: .enabled(cors: true),
-            reservedConcurrency: 10
         )
         
         return [
