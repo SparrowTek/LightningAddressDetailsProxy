@@ -15,6 +15,8 @@ import HTTPTypes
 
 let runtime = LambdaRuntime { (event: APIGatewayV2Request, context: LambdaContext) -> APIGatewayV2Response in
     let (statusCode, responseBody) = await generateInvoiceHandler(queryParams: event.queryStringParameters)
+    print("STATUS CODE: \(statusCode)")
+    print("RESPONSE BODY: \(responseBody)")
     return APIGatewayV2Response(statusCode: HTTPResponse.Status(code: statusCode), body: responseBody)
 }
 
@@ -37,6 +39,7 @@ private func encodeResponse(_ response: GIResponse) -> String {
 }
 
 func generateInvoiceHandler(queryParams: [String: String]) async -> (statusCode: Int, responseBody: String) {
+    print("QUERY PARAMS: \(queryParams)")
     var responseBody = GIResponse(invoice: nil)
     guard let ln = queryParams["ln"] else { return (400, encodeResponse(responseBody)) }
     
