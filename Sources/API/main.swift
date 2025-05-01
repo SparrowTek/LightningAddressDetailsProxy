@@ -14,10 +14,12 @@ import HTTPTypes
 
 
 let runtime = LambdaRuntime { (event: APIGatewayV2Request, context: LambdaContext) -> APIGatewayV2Response in
-    let (statusCode, responseBody) = await generateInvoiceHandler(queryParams: event.queryStringParameters)
-    print("STATUS CODE: \(statusCode)")
-    print("RESPONSE BODY: \(responseBody)")
-    return APIGatewayV2Response(statusCode: HTTPResponse.Status(code: statusCode), body: responseBody)
+    // let (statusCode, responseBody) = await generateInvoiceHandler(queryParams: event.queryStringParameters)
+    // print("STATUS CODE: \(statusCode)")
+    // print("RESPONSE BODY: \(responseBody)")
+    // return APIGatewayV2Response(statusCode: HTTPResponse.Status(code: statusCode), body: responseBody)
+
+    return APIGatewayV2Response(statusCode: HTTPResponse.Status(code: 200), body: "HELLO")
 }
 
 try await runtime.run()

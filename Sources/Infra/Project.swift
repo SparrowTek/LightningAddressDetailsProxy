@@ -19,6 +19,7 @@ struct LightningAddressDetailsProxy: AWSProject {
         
         return [
             "lightning-address_details-proxy-function-name" : lambda.name,
+            "URL" : lambda.url,
         ]
     }
 }
