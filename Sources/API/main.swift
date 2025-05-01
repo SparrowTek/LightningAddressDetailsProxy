@@ -19,7 +19,11 @@ let runtime = LambdaRuntime { (event: APIGatewayV2Request, context: LambdaContex
     // print("RESPONSE BODY: \(responseBody)")
     // return APIGatewayV2Response(statusCode: HTTPResponse.Status(code: statusCode), body: responseBody)
 
-    return APIGatewayV2Response(statusCode: HTTPResponse.Status(code: 200), body: "HELLO")
+    let body = event.queryStringParameters
+    .map { "\($0.key) : \($0.value)" }
+    .joined(separator: ", ")
+
+    return APIGatewayV2Response(statusCode: HTTPResponse.Status(code: 200), body: body)
 }
 
 try await runtime.run()
