@@ -17,9 +17,19 @@ struct LightningAddressDetailsProxy: AWSProject {
             url: .enabled(cors: true),
         )
         
+        let cdn = AWS.CDN(
+            "lightning-address-details-cdn",
+            origins: .function(lambda),
+            domainName: .init(
+                hostname: "lightning-address-details-proxy.avocadough.xyz",
+                dns: .cloudflare(zoneName: "avocadough.xyz")
+            )
+        )
+        
         return [
-            "lightning-address_details-proxy-function-name" : lambda.name,
-            "URL" : lambda.url,
+            "lightning-address-details-proxy-function-name": lambda.name,
+            "Function-URL": lambda.url,
+            "Public-URL": cdn.url,
         ]
     }
 }

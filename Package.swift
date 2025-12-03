@@ -1,20 +1,20 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.2
 
 import PackageDescription
 
 let package = Package(
     name: "API",
     platforms: [
-        .macOS(.v15),
+        .macOS(.v26),
     ],
     products: [
         .executable(name: "API", targets: ["API"]),
     ],
     dependencies: [
         .package(url: "https://github.com/swift-cloud/swift-cloud", branch: "main"),
-        .package(url: "https://github.com/swift-server/swift-aws-lambda-runtime", branch: "main"),
-        .package(url: "https://github.com/swift-server/swift-aws-lambda-events", branch: "main"),
-        .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.9.0"),
+        .package(url: "https://github.com/awslabs/swift-aws-lambda-runtime", from: "2.4.0"),
+        .package(url: "https://github.com/awslabs/swift-aws-lambda-events", from: "1.4.0"),
+        .package(url: "https://github.com/swift-server/async-http-client", from: "1.30.1"),
     ],
     targets: [
         .executableTarget(

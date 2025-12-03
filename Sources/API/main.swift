@@ -1,5 +1,5 @@
 //
-//  Untitled.swift
+//  main.swift
 //  LightningAddressDetailsProxy
 //
 //  Created by Thomas Rademaker on 3/10/25.
